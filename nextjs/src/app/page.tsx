@@ -3,6 +3,8 @@ import Hero from "@/components/Hero";
 import Bio from "@/components/Bio";
 import Problema from "@/components/Problema";
 import Metodo from "@/components/Metodo";
+import Videos from "@/components/Videos";
+import Carrossel from "@/components/Carrossel";
 import ParaQuem from "@/components/ParaQuem";
 import HerniaCervical from "@/components/HerniaCervical";
 import HerniaUmbilical from "@/components/HerniaUmbilical";
@@ -19,6 +21,8 @@ export default function Home() {
       <Bio />
       <Problema />
       <Metodo />
+      <Videos />
+      <Carrossel />
       <ParaQuem />
       <HerniaCervical />
       <HerniaUmbilical />
