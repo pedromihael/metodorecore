@@ -11,6 +11,7 @@ import HerniaUmbilical from "@/components/HerniaUmbilical";
 import Homens from "@/components/Homens";
 import Incluso from "@/components/Incluso";
 import Planos from "@/components/Planos";
+import Garantia from "@/components/Garantia";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
       <Homens />
       <Incluso />
       <Planos />
+      <Garantia />
       <Footer />
     </>
   );

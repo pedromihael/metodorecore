@@ -9,18 +9,18 @@ const items = [
 
 export default function Incluso() {
   return (
-    <section style={{ padding: "80px 0", background: "var(--warm-bg)" }}>
+    <section style={{ padding: "80px 0", background: "var(--cream)" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
         <span style={{ display: "inline-block", fontSize: 11, fontWeight: 600, letterSpacing: "2.5px", textTransform: "uppercase", color: "var(--rose)", marginBottom: 14 }}>
           O que está incluso
         </span>
-        <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(26px, 3vw, 38px)", color: "var(--crimson-dk)", marginBottom: 40 }}>
+        <h2 style={{ fontSize: "clamp(24px, 3vw, 36px)", color: "var(--crimson-dk)", marginBottom: 44, textAlign: "center" }}>
           O que você acessa ao entrar
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 18 }}>
           {items.map(({ title, text }) => (
-            <div key={title} style={{ background: "var(--white)", border: "1.5px solid var(--cream-dk)", borderRadius: "var(--radius)", padding: "24px 20px" }}>
-              <strong style={{ display: "block", fontSize: 14, fontWeight: 600, color: "var(--crimson-dk)", marginBottom: 8 }}>{title}</strong>
+            <div key={title} style={{ background: "var(--white)", borderRadius: "var(--radius)", padding: "26px 22px", borderLeft: "4px solid var(--crimson)", boxShadow: "0 4px 14px rgba(28,10,6,0.05)" }}>
+              <strong style={{ display: "block", fontSize: 15, color: "var(--crimson-dk)", marginBottom: 6 }}>{title}</strong>
               <p style={{ fontSize: 13.5, color: "var(--mid)", lineHeight: 1.65, margin: 0 }}>{text}</p>
             </div>
           ))}
