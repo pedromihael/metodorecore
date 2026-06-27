@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Método ReCore — Tatiéli Araújo</title>
 <meta name="description" content="Recupere seu core, feche a diástase e mude sua postura em 90 dias. Método ReCore por Tatiéli Araújo.">
+<link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="manifest" href="favicon/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -748,6 +753,222 @@
     .oferta__box { padding: 32px 20px; }
   }
 
+  /* ─── BIO ────────────────────────────────────────────────── */
+  .bio { background: var(--cream); }
+  .bio__inner {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .bio__text h2 {
+    font-size: clamp(26px, 3vw, 38px);
+    color: var(--crimson-dk);
+    margin-bottom: 18px;
+  }
+  .bio__text p {
+    font-size: 15.5px;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .bio__quote {
+    background: var(--crimson-dk);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+  }
+  .bio__quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .bio__quote cite {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rose-lt);
+    font-style: normal;
+  }
+
+  /* ─── HÉRNIA ─────────────────────────────────────────────── */
+  .hernia { background: var(--warm-bg); }
+  .hernia__inner {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .hernia__text h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    color: var(--crimson-dk);
+    margin-bottom: 18px;
+  }
+  .hernia__text p {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .hernia__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .hernia__card {
+    background: var(--white);
+    border: 1.5px solid var(--cream-dk);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    transition: border-color var(--transition);
+  }
+  .hernia__card:hover { border-color: var(--rose); }
+  .hernia__card strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--crimson);
+    margin-bottom: 6px;
+  }
+  .hernia__card p {
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ─── PLANOS ─────────────────────────────────────────────── */
+  .oferta__lead {
+    text-align: center;
+    font-size: 15px;
+    color: rgba(245,237,227,0.65);
+    margin-bottom: 40px;
+  }
+  .planos__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .plano {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 28px 24px;
+    position: relative;
+  }
+  .plano--featured {
+    background: var(--white);
+    border-color: var(--white);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .plano__featured-label {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--rose);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .plano__badge {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+  .plano__badge--green { background: rgba(102,187,106,0.2); color: #66BB6A; }
+  .plano__badge--blue  { background: rgba(66,133,244,0.15); color: #5C9EE8; }
+  .plano__badge--gold  { background: rgba(255,193,7,0.2);   color: #FFB300; }
+  .plano--featured .plano__badge--blue { background: rgba(66,133,244,0.12); }
+  .plano__price {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .plano--featured .plano__price { color: var(--crimson-dk); }
+  .plano__price sup { font-size: 20px; vertical-align: top; margin-top: 8px; display: inline-block; }
+  .plano__price-unit { font-size: 18px; font-weight: 400; }
+  .plano__period {
+    font-size: 13px;
+    color: rgba(245,237,227,0.55);
+    margin-bottom: 18px;
+  }
+  .plano--featured .plano__period { color: var(--mid); }
+  .plano__divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 18px 0;
+  }
+  .plano--featured .plano__divider { border-top-color: var(--cream-dk); }
+  .plano__list {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+  .plano__list li {
+    font-size: 13.5px;
+    color: rgba(245,237,227,0.8);
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+    text-align: left;
+  }
+  .plano--featured .plano__list li { color: var(--mid); }
+  .plano__list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 11px;
+    width: 5px; height: 5px;
+    background: var(--rose-lt);
+    border-radius: 50%;
+  }
+  .plano--featured .plano__list li::before { background: var(--rose); }
+  .plano__cta { font-size: 14px; padding: 16px 24px; }
+  .plano__cta--outline {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    box-shadow: none;
+  }
+  .plano__cta--outline:hover {
+    background: rgba(255,255,255,0.1);
+    box-shadow: none;
+    transform: none;
+  }
+  .plano__footnote {
+    font-size: 11.5px;
+    color: rgba(245,237,227,0.4);
+    margin-top: 12px;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .planos__grid { grid-template-columns: 1fr; }
+    .plano--featured { transform: none; }
+    .bio__inner { grid-template-columns: 1fr; gap: 32px; }
+    .hernia__inner { grid-template-columns: 1fr; gap: 32px; }
+    .hernia__cards { grid-template-columns: 1fr; }
+  }
+
   /* ─── FADE-IN ──────────────────────────────────────────── */
   .fade-in {
     opacity: 0;
@@ -764,7 +985,7 @@
   <div class="logo">
     <img src="logo/LOGO_RECORE_4_transparent-branco.PNG" alt="ReCore Tatiéli Araújo">
   </div>
-  <a href="https://pay.kiwify.com.br/SEU_LINK_AQUI" target="_blank" rel="noopener" class="btn-cta btn-cta--outline nav-cta">
+  <a href="https://forms.gle/TnZrdGZhnJgwL3LK7" target="_blank" rel="noopener" class="btn-cta btn-cta--outline nav-cta">
     Acessar o curso
   </a>
 </nav>
@@ -788,24 +1009,45 @@
         Recuperação de diástase e disfunção abdominal para mulheres no pós-parto e para todas que sentem que o abdômen não é mais o mesmo.
       </p>
       <div class="hero__cta-block">
-        <a href="https://pay.kiwify.com.br/SEU_LINK_AQUI" target="_blank" rel="noopener" class="btn-cta btn-cta--large">
+        <a href="https://forms.gle/TnZrdGZhnJgwL3LK7" target="_blank" rel="noopener" class="btn-cta btn-cta--large">
           Começar Minha Recuperação
         </a>
-        <span class="hero__note">Acesso por 12 meses · Garantia de 7 dias</span>
+        <span class="hero__note">A partir de R$ 47 · Garantia de 7 dias</span>
       </div>
       <div class="hero__proof">
         <div class="hero__proof-item">
-          <span class="hero__proof-num">90</span>
-          <span class="hero__proof-label">Dias de<br>protocolo</span>
+          <span class="hero__proof-num">17</span>
+          <span class="hero__proof-label">Anos de<br>experiência</span>
         </div>
         <div class="hero__proof-item">
           <span class="hero__proof-num">100%</span>
           <span class="hero__proof-label">Online</span>
         </div>
         <div class="hero__proof-item">
-          <span class="hero__proof-num">1 ano</span>
-          <span class="hero__proof-label">De acesso</span>
+          <span class="hero__proof-num">+30</span>
+          <span class="hero__proof-label">Abdômens<br>recuperados</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIO -->
+<section class="section bio fade-in">
+  <div class="container">
+    <div class="bio__inner">
+      <div class="bio__text">
+        <span class="tag">Quem vai te guiar</span>
+        <h2>Eu sou Tatiéli Araújo</h2>
+        <p>Esteticista com mais de 17 anos de profissão, especializada em recuperação funcional abdominal e corporal. Ao longo da carreira, acompanhei dezenas de mulheres que chegaram com queixas que pareciam estéticas mas tinham origem muscular e postural.</p>
+        <p>Desenvolvi o Método ReCore a partir dessa experiência prática: um protocolo que trata a causa da disfunção abdominal, não só a aparência. Seja no pós-parto, na diástase instalada há anos ou no abdômen que estufa sem explicação aparente, o caminho é o mesmo: reconstruir o core de dentro para fora.</p>
+        <p>Vou te guiar nesse processo com exercícios progressivos, explicações claras e uma abordagem que respeita o tempo e o corpo de cada mulher.</p>
+      </div>
+      <div class="bio__quote">
+        <blockquote>
+          "A maioria das mulheres aprende a conviver com um corpo que não funciona direito. Eu acredito que dá pra mudar isso."
+        </blockquote>
+        <cite>Tatiéli Araújo</cite>
       </div>
     </div>
   </div>
@@ -1023,6 +1265,39 @@
   </div>
 </section>
 
+<!-- HÉRNIA CERVICAL -->
+<section class="section hernia fade-in">
+  <div class="container">
+    <div class="hernia__inner">
+      <div class="hernia__text">
+        <span class="tag">Além do abdômen</span>
+        <h2>Core fraco e dor cervical têm mais relação do que parece</h2>
+        <p>A coluna vertebral funciona como uma cadeia cinética: o que acontece em uma região afeta as outras. Quando a musculatura do core está fraca ou disfuncional, o corpo compensa redistribuindo a carga para outras estruturas, incluindo a região lombar, dorsal e cervical.</p>
+        <p>Pesquisas recentes mostram que mulheres com dor cervical crônica apresentam função reduzida do transverso abdominal, o músculo profundo que é o principal alvo do Método ReCore. Isso indica que a disfunção do core pode contribuir para compensações posturais que sobrecarregam os músculos do pescoço e do trapézio, aumentando a pressão sobre os discos cervicais.</p>
+        <p>Fortalecer o core de forma adequada ajuda a corrigir a postura global, reduzir as tensões compensatórias no trapézio e nos músculos cervicais e diminuir a sobrecarga sobre a região do pescoço. Não substitui o tratamento médico da hérnia cervical, mas atua como suporte importante para quem convive com esse diagnóstico.</p>
+      </div>
+      <div class="hernia__cards">
+        <div class="hernia__card">
+          <strong>Core fraco</strong>
+          <p>Reduz a estabilidade da coluna inteira, forçando músculos cervicais a compensar.</p>
+        </div>
+        <div class="hernia__card">
+          <strong>Postura anterior</strong>
+          <p>Cabeça projetada à frente aumenta a carga sobre os discos cervicais em até 4x.</p>
+        </div>
+        <div class="hernia__card">
+          <strong>Trapézio sobrecarregado</strong>
+          <p>Tensão crônica no trapézio superior é sintoma de instabilidade postural do tronco.</p>
+        </div>
+        <div class="hernia__card">
+          <strong>Core forte</strong>
+          <p>Estabiliza o tronco, libera a tensão cervical e melhora o alinhamento de toda a coluna.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- O QUE VOCÊ RECEBE -->
 <section class="section incluso fade-in">
   <div class="container">
@@ -1034,7 +1309,7 @@
         <p>Cada exercício gravado com instrução clara de execução, respiração e posicionamento.</p>
       </div>
       <div class="incluso__item">
-        <strong>Plano estruturado de 90 dias</strong>
+        <strong>Protocolo progressivo estruturado</strong>
         <p>Cronograma semana a semana para que cada fase do core seja trabalhada na sequência certa.</p>
       </div>
       <div class="incluso__item">
@@ -1060,31 +1335,71 @@
 <!-- OFERTA -->
 <section class="section oferta fade-in" id="oferta">
   <div class="container">
-    <div class="oferta__box">
-      <div class="oferta__tag">Acesso completo</div>
-      <h2>Método ReCore</h2>
-      <p class="oferta__period">12 meses de acesso · Começa hoje</p>
-      <div class="oferta__price-wrap">
-        <p class="oferta__from">De R$ 497,00</p>
-        <div class="oferta__price">
-          <sup>R$</sup>297
-        </div>
-        <p class="oferta__installment">ou 12x de R$ 29,70 no cartão</p>
+    <span class="tag tag--light">Planos</span>
+    <h2 style="color:var(--white);text-align:center;margin-bottom:12px;">Escolha o plano ideal para você</h2>
+    <p class="oferta__lead">Acesso imediato após confirmação. Garantia de 7 dias em todos os planos.</p>
+    <div class="planos__grid">
+
+      <!-- Essencial -->
+      <div class="plano">
+        <div class="plano__badge plano__badge--green">Essencial</div>
+        <div class="plano__price"><sup>R$</sup>47</div>
+        <p class="plano__period">Acesso por 6 meses</p>
+        <hr class="plano__divider">
+        <ul class="plano__list">
+          <li>Acesso completo ao curso</li>
+          <li>Assista no seu ritmo, onde e quando quiser</li>
+          <li>Atualizações com novos vídeos e conteúdos</li>
+          <li>Novos exercícios de mobilidade e fortalecimento</li>
+          <li>Conteúdo para diástase abdominal e disfunções musculares</li>
+        </ul>
+        <a href="https://forms.gle/TnZrdGZhnJgwL3LK7" target="_blank" rel="noopener" class="btn-cta btn-cta--full plano__cta plano__cta--outline">
+          Começar com Essencial
+        </a>
       </div>
-      <hr class="oferta__divider">
-      <ul class="oferta__includes">
-        <li>Protocolo completo em vídeo-aulas</li>
-        <li>Plano estruturado de 90 dias</li>
-        <li>Guia de avaliação da diástase</li>
-        <li>Acesso por 12 meses na plataforma</li>
-        <li>Atualizações gratuitas inclusas</li>
-        <li>Suporte via comunidade exclusiva</li>
-      </ul>
-      <a href="https://pay.kiwify.com.br/SEU_LINK_AQUI" target="_blank" rel="noopener" class="btn-cta btn-cta--large btn-cta--full">
-        Quero recuperar meu core
-      </a>
-      <p class="oferta__note">Pagamento seguro via Kiwify · Acesso imediato após confirmação</p>
+
+      <!-- Completo (destaque) -->
+      <div class="plano plano--featured">
+        <div class="plano__featured-label">Mais escolhido</div>
+        <div class="plano__badge plano__badge--blue">Completo</div>
+        <div class="plano__price"><sup>R$</sup>67</div>
+        <p class="plano__period">Acesso por 12 meses</p>
+        <hr class="plano__divider">
+        <ul class="plano__list">
+          <li>Tudo do Plano Essencial, mais:</li>
+          <li>Acesso por 1 ano completo</li>
+          <li>Grupo exclusivo para tirar dúvidas com a profissional</li>
+          <li>Novos protocolos de mobilidade e progressão</li>
+          <li>Mais tempo para acompanhar todas as atualizações</li>
+        </ul>
+        <a href="https://forms.gle/TnZrdGZhnJgwL3LK7" target="_blank" rel="noopener" class="btn-cta btn-cta--full plano__cta">
+          Começar com Completo
+        </a>
+      </div>
+
+      <!-- Mentoria -->
+      <div class="plano">
+        <div class="plano__badge plano__badge--gold">Mentoria ReCore</div>
+        <div class="plano__price"><sup>R$</sup>297<span class="plano__price-unit">/mês</span></div>
+        <p class="plano__period">Acompanhamento individual</p>
+        <hr class="plano__divider">
+        <ul class="plano__list">
+          <li>Tudo do Plano Completo, mais:</li>
+          <li>Mentoria online por videochamada</li>
+          <li>Dois encontros por semana</li>
+          <li>Avaliação postural e de diástase individual</li>
+          <li>Plano de exercícios personalizado</li>
+          <li>Correção da execução em tempo real</li>
+          <li>Acompanhamento da evolução com ajustes contínuos</li>
+        </ul>
+        <a href="https://forms.gle/TnZrdGZhnJgwL3LK7" target="_blank" rel="noopener" class="btn-cta btn-cta--full plano__cta plano__cta--outline">
+          Quero a Mentoria
+        </a>
+        <p class="plano__footnote">Acompanhamento próximo para executar os exercícios com mais segurança e constância.</p>
+      </div>
+
     </div>
+    <p class="oferta__note" style="text-align:center;margin-top:28px;">Pagamento seguro via Kiwify · Acesso imediato após confirmação</p>
   </div>
 </section>
 
@@ -1110,8 +1425,10 @@
   <div class="container">
     <img src="logo/LOGO_RECORE_4_transparent-branco.PNG" alt="ReCore Tatiéli Araújo">
     <p>
-      2024 Método ReCore · Tatiéli Araújo<br>
-      Dúvidas? <a href="mailto:contato@tatieliaraujo.com.br">contato@tatieliaraujo.com.br</a>
+      2026 Método ReCore por Tatiéli Araújo<br>
+      Dúvidas? Entre em contato: <a href="https://wa.me/5567992128879" target="_blank" rel="noopener">+55 67 99212-8879 (WhatsApp)</a><br>
+      <a href="https://instagram.com/esteticatatieliaraujo" target="_blank" rel="noopener">@esteticatatieliaraujo</a> no Instagram &nbsp;·&nbsp;
+      <a href="https://tiktok.com/@esteticatatieli" target="_blank" rel="noopener">@esteticatatieli</a> no TikTok
     </p>
   </div>
 </footer>
