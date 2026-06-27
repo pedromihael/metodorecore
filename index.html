@@ -840,6 +840,98 @@
     margin: 0;
   }
 
+  /* ─── HÉRNIA UMBILICAL ───────────────────────────────────── */
+  .hernia-umbilical { background: var(--warm-bg); }
+  .humbilical__inner {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .humbilical__text h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    color: var(--crimson-dk);
+    margin-bottom: 18px;
+  }
+  .humbilical__text p {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .humbilical__photo-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .humbilical__photo img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+  .humbilical__caption {
+    font-size: 12px;
+    color: var(--mid);
+    opacity: 0.7;
+    text-align: center;
+    margin: 0;
+  }
+
+  /* ─── HOMENS ─────────────────────────────────────────────── */
+  .homens { background: var(--dark); }
+  .homens__inner {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .homens__photo img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+  .homens__text h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    color: var(--cream);
+    margin-bottom: 18px;
+  }
+  .homens__text p {
+    font-size: 15px;
+    color: rgba(245,237,227,0.75);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .homens__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .homens__card {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    transition: border-color var(--transition);
+  }
+  .homens__card:hover { border-color: var(--rose); }
+  .homens__card strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--rose-lt);
+    margin-bottom: 6px;
+  }
+  .homens__card p {
+    font-size: 12.5px;
+    color: rgba(245,237,227,0.65);
+    line-height: 1.6;
+    margin: 0;
+  }
+
   /* ─── PLANOS ─────────────────────────────────────────────── */
   .oferta__lead {
     text-align: center;
@@ -967,6 +1059,9 @@
     .bio__inner { grid-template-columns: 1fr; gap: 32px; }
     .hernia__inner { grid-template-columns: 1fr; gap: 32px; }
     .hernia__cards { grid-template-columns: 1fr; }
+    .humbilical__inner { grid-template-columns: 1fr; gap: 32px; }
+    .homens__inner { grid-template-columns: 1fr; gap: 32px; }
+    .homens__cards { grid-template-columns: 1fr; }
   }
 
   /* ─── FADE-IN ──────────────────────────────────────────── */
@@ -1006,7 +1101,7 @@
         quem ele era.
       </h1>
       <p class="hero__sub">
-        Recuperação de diástase e disfunção abdominal para mulheres no pós-parto e para todas que sentem que o abdômen não é mais o mesmo.
+        Recuperação de diástase e disfunção abdominal para quem sente que o abdômen não é mais o mesmo, independente do motivo.
       </p>
       <div class="hero__cta-block">
         <a href="https://forms.gle/TnZrdGZhnJgwL3LK7" target="_blank" rel="noopener" class="btn-cta btn-cta--large">
@@ -1039,13 +1134,13 @@
       <div class="bio__text">
         <span class="tag">Quem vai te guiar</span>
         <h2>Eu sou Tatiéli Araújo</h2>
-        <p>Esteticista com mais de 17 anos de profissão, especializada em recuperação funcional abdominal e corporal. Ao longo da carreira, acompanhei dezenas de mulheres que chegaram com queixas que pareciam estéticas mas tinham origem muscular e postural.</p>
-        <p>Desenvolvi o Método ReCore a partir dessa experiência prática: um protocolo que trata a causa da disfunção abdominal, não só a aparência. Seja no pós-parto, na diástase instalada há anos ou no abdômen que estufa sem explicação aparente, o caminho é o mesmo: reconstruir o core de dentro para fora.</p>
-        <p>Vou te guiar nesse processo com exercícios progressivos, explicações claras e uma abordagem que respeita o tempo e o corpo de cada mulher.</p>
+        <p>Esteticista com mais de 17 anos de profissão, especializada em recuperação funcional abdominal e corporal. Ao longo da carreira, acompanhei pessoas que chegaram com queixas que pareciam estéticas mas tinham origem muscular e postural.</p>
+        <p>Desenvolvi o Método ReCore a partir dessa experiência prática: um protocolo que trata a causa da disfunção abdominal, não só a aparência. Seja no pós-parto, na diástase instalada há anos, na hérnia umbilical ou no abdômen que estufa sem explicação aparente, o caminho é o mesmo: reconstruir o core de dentro para fora.</p>
+        <p>Vou te guiar nesse processo com exercícios progressivos, explicações claras e uma abordagem que respeita o tempo e o corpo de cada pessoa.</p>
       </div>
       <div class="bio__quote">
         <blockquote>
-          "A maioria das mulheres aprende a conviver com um corpo que não funciona direito. Eu acredito que dá pra mudar isso."
+          "A maioria das pessoas aprende a conviver com um corpo que não funciona direito. Eu acredito que dá pra mudar isso."
         </blockquote>
         <cite>Tatiéli Araújo</cite>
       </div>
@@ -1248,19 +1343,19 @@
 <section class="section section--dark para-quem fade-in">
   <div class="container">
     <span class="tag tag--light">Para quem é</span>
-    <h2>Você não precisa ter acabado de ter um filho.</h2>
+    <h2>Diástase não tem perfil. Qualquer pessoa pode ter.</h2>
     <p class="para-quem__lead">
-      O protocolo foi pensado para qualquer mulher com abdômen disfuncional, independente de quando a gestação aconteceu.
+      O protocolo foi desenvolvido para quem tem abdômen disfuncional, independente do motivo ou de quando o problema começou.
     </p>
     <div class="para-quem__list">
       <div class="para-quem__item"><p>Você teve filho e o abdômen ficou diferente desde então.</p></div>
       <div class="para-quem__item"><p>A barriguinha baixa não some com exercício nem com dieta.</p></div>
       <div class="para-quem__item"><p>Você tem diagnóstico de diástase abdominal.</p></div>
       <div class="para-quem__item"><p>O abdômen estufa muito ao longo do dia.</p></div>
-      <div class="para-quem__item"><p>Você sente dor lombar que piorou depois da gestação.</p></div>
+      <div class="para-quem__item"><p>Você sente dor lombar sem causa aparente.</p></div>
       <div class="para-quem__item"><p>Quer se exercitar mas tem receio de agravar a diástase.</p></div>
       <div class="para-quem__item"><p>O core está sem força e você sente isso no dia a dia.</p></div>
-      <div class="para-quem__item"><p>Quer resultado sem cirurgia e sem equipamentos.</p></div>
+      <div class="para-quem__item"><p>Perdeu muito peso e o abdômen ficou fraco e sem tônus.</p></div>
     </div>
   </div>
 </section>
@@ -1292,6 +1387,62 @@
         <div class="hernia__card">
           <strong>Core forte</strong>
           <p>Estabiliza o tronco, libera a tensão cervical e melhora o alinhamento de toda a coluna.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HÉRNIA UMBILICAL -->
+<section class="section section--warm hernia-umbilical fade-in">
+  <div class="container">
+    <div class="humbilical__inner">
+      <div class="humbilical__text">
+        <span class="tag">Hérnia umbilical</span>
+        <h2>Hérnia umbilical e diástase costumam andar juntas.</h2>
+        <p>Quando a musculatura do core está fraca, a pressão intra-abdominal aumenta. Esse aumento de pressão pode empurrar tecido pelo umbigo, favorecendo a hérnia. Quem já tem o diagnóstico frequentemente também tem diástase abdominal sem saber.</p>
+        <p>O Método ReCore trabalha a ativação da musculatura profunda, reduzindo essa pressão excessiva e melhorando a função abdominal. Não substitui avaliação médica, mas atua diretamente na causa mecânica do problema: core fraco não sustenta.</p>
+      </div>
+      <div class="humbilical__photos">
+        <div class="humbilical__photo-pair">
+          <div class="humbilical__photo">
+            <img src="pacientes/paciente5-frente.JPG" alt="Paciente 5 frente" loading="lazy">
+          </div>
+          <div class="humbilical__photo">
+            <img src="pacientes/paciente5-lateral.JPG" alt="Paciente 5 lateral" loading="lazy">
+          </div>
+        </div>
+        <p class="humbilical__caption">Paciente com hérnia umbilical e diástase abdominal acompanhada pelo Método ReCore.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOMENS -->
+<section class="section section--dark homens fade-in">
+  <div class="container">
+    <div class="homens__inner">
+      <div class="homens__photo">
+        <img src="pacientes/paciente-homem.JPG" alt="Paciente homem" loading="lazy">
+      </div>
+      <div class="homens__text">
+        <span class="tag tag--light">Para homens também</span>
+        <h2>Diástase e disfunção do core não são exclusividade feminina.</h2>
+        <p>Homens também desenvolvem fraqueza da parede abdominal, especialmente após grande perda de peso, cirurgias ou sedentarismo prolongado. O resultado é parecido: instabilidade, dor lombar, alterações posturais e dificuldade com atividade física.</p>
+        <p>O Método ReCore trata a raiz do problema. Ativação do transverso, reabilitação do core profundo, progressão de carga. O protocolo se adapta ao corpo, não ao gênero.</p>
+        <div class="homens__cards">
+          <div class="homens__card">
+            <strong>Grande perda de peso</strong>
+            <p>Enfraquece a parede abdominal e deixa o core sem sustentação para as atividades do dia a dia.</p>
+          </div>
+          <div class="homens__card">
+            <strong>Dor lombar crônica</strong>
+            <p>Core fraco redistribui carga para a lombar. Tratar o abdômen resolve onde o analgésico não chega.</p>
+          </div>
+          <div class="homens__card">
+            <strong>Pós-cirúrgico</strong>
+            <p>Cirurgias abdominais comprometem a musculatura profunda. Reabilitar o core é parte da recuperação completa.</p>
+          </div>
         </div>
       </div>
     </div>
