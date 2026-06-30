@@ -122,6 +122,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100vh;
+    overflow: hidden;
   }
   .hero__photo {
     position: relative;
@@ -187,11 +188,12 @@
   .hero__proof {
     display: flex;
     gap: 32px;
+    justify-content: center;
     margin-top: clamp(14px, 2.5vh, 40px);
     padding-top: clamp(14px, 2.5vh, 32px);
     border-top: 1px solid var(--cream-dk);
   }
-  .hero__proof-item { text-align: left; }
+  .hero__proof-item { text-align: center; }
   .hero__proof-num {
     font-family: 'Playfair Display', serif;
     font-size: 28px;
@@ -1068,8 +1070,11 @@
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: calc(var(--i, 0) * 0.1s);
   }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .plano--featured.fade-in.visible { transform: translateY(-8px); }
+  @media (max-width: 900px) { .plano--featured.fade-in.visible { transform: none; } }
 </style>
 </head>
 <body>
@@ -1590,8 +1595,36 @@
     nav.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
-  // Fade-in
-  const fadeEls = document.querySelectorAll('.fade-in');
+  // Scroll animations — child-level stagger for card grids
+  [
+    '.bio__inner > *',
+    '.problema__card',
+    '.para-quem__item',
+    '.incluso__item',
+    '.plano',
+    '.video-card',
+    '.homens__inner > *',
+    '.hernia__inner > *',
+  ].forEach(sel => {
+    const grouped = new Map();
+    document.querySelectorAll(sel).forEach(el => {
+      const p = el.parentElement;
+      if (!grouped.has(p)) grouped.set(p, []);
+      grouped.get(p).push(el);
+    });
+    grouped.forEach(els => els.forEach((el, i) => {
+      el.classList.add('fade-in');
+      el.style.setProperty('--i', i);
+    }));
+  });
+
+  // Remove section-level fade-in where children now handle animation
+  ['.bio', '.problema', '.para-quem', '.incluso', '.oferta', '.videos', '.homens', '.hernia'].forEach(sel => {
+    const el = document.querySelector(sel);
+    if (el) el.classList.remove('fade-in');
+  });
+
+  // Observe all fade-in elements
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -1599,8 +1632,8 @@
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
-  fadeEls.forEach(el => observer.observe(el));
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
   // Carousel drag
   const outer = document.getElementById('carouselOuter');
