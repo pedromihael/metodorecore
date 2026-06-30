@@ -121,11 +121,10 @@
   .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
+    height: 100vh;
   }
   .hero__photo {
     position: relative;
-    overflow: hidden;
   }
   .hero__photo img {
     width: 100%;
@@ -157,7 +156,7 @@
     background: var(--warm-bg);
     display: flex;
     align-items: center;
-    padding: 120px 56px 60px 24px;
+    padding: clamp(72px, 9vh, 110px) 56px clamp(20px, 3vh, 48px) 24px;
   }
   .hero__copy-inner { max-width: 480px; }
   .hero__title {
@@ -175,7 +174,7 @@
     font-size: 17px;
     font-weight: 300;
     line-height: 1.75;
-    margin-bottom: 36px;
+    margin-bottom: clamp(14px, 2.5vh, 36px);
     color: var(--mid);
     max-width: 420px;
   }
@@ -188,8 +187,8 @@
   .hero__proof {
     display: flex;
     gap: 32px;
-    margin-top: 40px;
-    padding-top: 32px;
+    margin-top: clamp(14px, 2.5vh, 40px);
+    padding-top: clamp(14px, 2.5vh, 32px);
     border-top: 1px solid var(--cream-dk);
   }
   .hero__proof-item { text-align: left; }
