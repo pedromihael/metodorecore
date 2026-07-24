@@ -942,9 +942,11 @@
   }
   .planos__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     align-items: stretch;
+    max-width: 760px;
+    margin: 0 auto;
   }
   .plano {
     background: rgba(255,255,255,0.06);
@@ -1138,7 +1140,7 @@
       <div class="bio__text">
         <span class="tag">Quem vai te guiar</span>
         <h2>Eu sou Tatiéli Araújo</h2>
-        <p>Esteticista com mais de 17 anos de profissão, especializada em recuperação funcional abdominal e corporal. Ao longo da carreira, acompanhei pessoas que chegaram com queixas que pareciam estéticas mas tinham origem muscular e postural.</p>
+        <p>Com mais de 17 anos de profissão, especializada em recuperação funcional abdominal e corporal. Ao longo da carreira, acompanhei pessoas que chegaram com queixas que pareciam estéticas mas tinham origem muscular e postural.</p>
         <p>Desenvolvi o Método ReCore a partir dessa experiência prática: um protocolo que trata a causa da disfunção abdominal, não só a aparência. Seja no pós-parto, na diástase instalada há anos, na hérnia umbilical ou no abdômen que estufa sem explicação aparente, o caminho é o mesmo: reconstruir o core de dentro para fora.</p>
         <p>Vou te guiar nesse processo com exercícios progressivos, explicações claras e uma abordagem que respeita o tempo e o corpo de cada pessoa.</p>
       </div>
@@ -1495,11 +1497,12 @@
     <p class="oferta__lead">Acesso imediato após confirmação. Garantia de 7 dias em todos os planos.</p>
     <div class="planos__grid">
 
-      <!-- Essencial -->
-      <div class="plano">
-        <div class="plano__badge plano__badge--green">Essencial</div>
-        <div class="plano__price"><sup>R$</sup>47</div>
-        <p class="plano__period">Acesso por 6 meses</p>
+      <!-- Completo (destaque) -->
+      <div class="plano plano--featured">
+        <div class="plano__featured-label">Mais escolhido</div>
+        <div class="plano__badge plano__badge--blue">Completo</div>
+        <div class="plano__price"><sup>R$</sup>267</div>
+        <p class="plano__period">Acesso por 12 meses</p>
         <hr class="plano__divider">
         <ul class="plano__list">
           <li>Acesso completo ao curso</li>
@@ -1507,27 +1510,9 @@
           <li>Atualizações com novos vídeos e conteúdos</li>
           <li>Novos exercícios de mobilidade e fortalecimento</li>
           <li>Conteúdo para diástase abdominal e disfunções musculares</li>
-        </ul>
-        <a href="https://pay.kiwify.com.br/Abzsnsi" target="_blank" rel="noopener" class="btn-cta btn-cta--full plano__cta plano__cta--outline">
-          Começar com Essencial
-        </a>
-      </div>
-
-      <!-- Completo (destaque) -->
-      <div class="plano plano--featured">
-        <div class="plano__featured-label">Mais escolhido</div>
-        <div class="plano__badge plano__badge--blue">Completo</div>
-        <div class="plano__price"><sup>R$</sup>67</div>
-        <p class="plano__period">Acesso por 12 meses</p>
-        <hr class="plano__divider">
-        <ul class="plano__list">
-          <li>Tudo do Plano Essencial, mais:</li>
-          <li>Acesso por 1 ano completo</li>
           <li>Grupo exclusivo para tirar dúvidas com a profissional</li>
-          <li>Novos protocolos de mobilidade e progressão</li>
-          <li>Mais tempo para acompanhar todas as atualizações</li>
         </ul>
-        <a href="https://pay.kiwify.com.br/mEkO6O9" target="_blank" rel="noopener" class="btn-cta btn-cta--full plano__cta">
+        <a href="https://pay.kiwify.com.br/mEkO6O9" target="_blank" rel="noopener" class="btn-cta btn-cta--full plano__cta" id="cta-completo">
           Começar com Completo
         </a>
       </div>
@@ -1535,11 +1520,11 @@
       <!-- Mentoria -->
       <div class="plano">
         <div class="plano__badge plano__badge--gold">Mentoria ReCore</div>
-        <div class="plano__price"><sup>R$</sup>297<span class="plano__price-unit">/mês</span></div>
+        <div class="plano__price"><sup>R$</sup>597</div>
         <p class="plano__period">Acompanhamento individual</p>
         <hr class="plano__divider">
         <ul class="plano__list">
-          <li>Tudo do Plano Completo, mais:</li>
+          <li>Tudo do plano Completo, mais:</li>
           <li>Mentoria online por videochamada</li>
           <li>Dois encontros por semana</li>
           <li>Avaliação postural e de diástase individual</li>
@@ -1634,6 +1619,19 @@
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Affiliate tracking
+  const AFFILIATES = {
+    'elisa.almeidah': 'https://pay.kiwify.com.br/Abzsnsi?afid=9GCtTSYG',
+  };
+  (function () {
+    const afiliado = new URLSearchParams(window.location.search).get('afiliado');
+    if (!afiliado || !AFFILIATES[afiliado]) return;
+    const url = AFFILIATES[afiliado];
+    document.querySelectorAll('a[href="https://pay.kiwify.com.br/mEkO6O9"]').forEach(a => {
+      a.href = url;
+    });
+  })();
 
   // Carousel drag
   const outer = document.getElementById('carouselOuter');
