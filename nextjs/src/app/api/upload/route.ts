@@ -3,6 +3,13 @@ import { createClient } from '@supabase/supabase-js';
 import { createAuthClient } from '@/lib/supabase-server';
 import path from 'path';
 
+const MIME: Record<string, string> = {
+  '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
+  '.png': 'image/png', '.gif': 'image/gif',
+  '.webp': 'image/webp', '.heic': 'image/heic',
+  '.heif': 'image/heif', '.avif': 'image/avif',
+};
+
 function storageClient() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -29,10 +36,14 @@ export async function POST(request: NextRequest) {
   const bytes = await file.arrayBuffer();
   const supabase = storageClient();
 
+  const contentType = (file.type && file.type !== 'application/octet-stream')
+    ? file.type
+    : (MIME[ext] ?? 'image/jpeg');
+
   const { error } = await supabase.storage
     .from('site-images')
     .upload(storagePath, Buffer.from(bytes), {
-      contentType: file.type || 'application/octet-stream',
+      contentType,
       upsert: false,
     });
 
@@ -40,7 +51,7 @@ export async function POST(request: NextRequest) {
 
   const { data: { publicUrl } } = supabase.storage
     .from('site-images')
-    .getPublicUrl(storagePath);
+    .getPublicUrl(storagePath, { download: false });
 
   return NextResponse.json({ url: publicUrl });
 }
