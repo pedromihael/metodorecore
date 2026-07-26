@@ -164,6 +164,104 @@ function CardListEditor({ label, items, onChange }: { label: string; items: Card
   );
 }
 
+// ─── Card themes ─────────────────────────────────────────────────────────────
+
+const CARD_THEMES: { id: string; label: string; bg: string; title: string; body: string; border: string }[] = [
+  { id: 'classic', label: 'Clássico',  bg: '#FFFFFF',  title: '#A63028', body: '#5A3328', border: '#EAD9C8' },
+  { id: 'warm',    label: 'Quente',    bg: '#F5EDE3',  title: '#A63028', body: '#1C0A06', border: '#D9A896' },
+  { id: 'dark',    label: 'Escuro',    bg: '#1C0A06',  title: '#F5EDE3', body: '#D9A896', border: '#5A3328' },
+  { id: 'crimson', label: 'Carmesim', bg: '#A63028',  title: '#F5EDE3', body: '#EAD9C8', border: '#7A1E14' },
+  { id: 'neutral', label: 'Neutro',   bg: '#FAF5F0',  title: '#5A3328', body: '#5A3328', border: '#EAD9C8' },
+];
+
+function suggestTheme(items: CardItem[]): string {
+  const counts: Record<string, number> = {};
+  CARD_THEMES.forEach(t => { counts[t.id] = 0; });
+  items.forEach(c => { if (c.theme) counts[c.theme] = (counts[c.theme] ?? 0) + 1; });
+  return CARD_THEMES.reduce((min, t) => counts[t.id] < counts[min.id] ? t : min, CARD_THEMES[0]).id;
+}
+
+function ThemedCardListEditor({ label, items, onChange }: { label: string; items: CardItem[]; onChange: (v: CardItem[]) => void }) {
+  const addCard = () => {
+    const suggested = suggestTheme(items);
+    onChange([...items, { title: '', body: '', theme: suggested }]);
+  };
+
+  return (
+    <div style={{ marginBottom: 16 }}>
+      <label style={labelBase}>{label}</label>
+      {items.map((card, i) => {
+        const theme = CARD_THEMES.find(t => t.id === (card.theme ?? 'classic')) ?? CARD_THEMES[0];
+        const updateCard = (patch: Partial<CardItem>) =>
+          onChange(items.map((c, j) => j === i ? { ...c, ...patch } : c));
+        return (
+          <div key={i} style={{ ...cardBase, borderLeft: `4px solid ${theme.bg === '#FFFFFF' ? C.border : theme.bg}` }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+              <span style={{ fontSize: 12, color: C.muted }}>Card {i + 1}</span>
+              <button onClick={() => onChange(items.filter((_, j) => j !== i))} style={btnRemove}>✕ Remover</button>
+            </div>
+
+            {/* Theme picker */}
+            <label style={{ ...labelBase, marginBottom: 8 }}>Tema</label>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
+              {CARD_THEMES.map(t => {
+                const active = (card.theme ?? 'classic') === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    onClick={() => updateCard({ theme: t.id })}
+                    title={t.label}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 6,
+                      padding: '5px 12px',
+                      background: active ? t.bg : C.white,
+                      border: `2px solid ${active ? (t.bg === '#FFFFFF' ? C.crimson : t.bg) : C.border}`,
+                      borderRadius: 20,
+                      cursor: 'pointer',
+                      fontFamily: 'inherit',
+                      fontSize: 12,
+                      fontWeight: active ? 600 : 400,
+                      color: active ? t.title : C.text,
+                      transition: 'all 0.15s',
+                    }}
+                  >
+                    <span style={{
+                      width: 12, height: 12, borderRadius: '50%',
+                      background: t.bg, border: `1.5px solid ${t.border}`,
+                      flexShrink: 0,
+                    }} />
+                    {t.label}
+                    {!active && suggestTheme(items.filter((_, j) => j !== i)) === t.id && (
+                      <span style={{ fontSize: 10, color: C.muted, marginLeft: 2 }}>★ sugerido</span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Preview */}
+            <div style={{
+              background: theme.bg, border: `1.5px solid ${theme.border}`,
+              borderRadius: 8, padding: '12px 16px', marginBottom: 14,
+            }}>
+              <div style={{ fontSize: 13, fontWeight: 600, color: theme.title, marginBottom: 4 }}>
+                {card.title || 'Título do card'}
+              </div>
+              <div style={{ fontSize: 12, color: theme.body, lineHeight: 1.5 }}>
+                {card.body || 'Texto do card'}
+              </div>
+            </div>
+
+            <Field label="Título" value={card.title} onChange={v => updateCard({ title: v })} />
+            <Field label="Texto" value={card.body} type="textarea" onChange={v => updateCard({ body: v })} />
+          </div>
+        );
+      })}
+      <button onClick={addCard} style={btnAdd}>+ Card</button>
+    </div>
+  );
+}
+
 // ─── Image uploader ───────────────────────────────────────────────────────────
 
 function ImageUploader({ label, currentSrc, folder, onUploaded }: {
@@ -402,7 +500,7 @@ function ProblemaSection({ content, set }: SP) {
       <Field label="Tag" value={content.problema.tag} onChange={v => set(d => { d.problema.tag = v; })} />
       <Field label="Título (\\n = quebra de linha)" value={content.problema.heading} type="textarea" rows={2} onChange={v => set(d => { d.problema.heading = v; })} />
       <Field label="Lead" value={content.problema.lead} type="textarea" onChange={v => set(d => { d.problema.lead = v; })} />
-      <CardListEditor label="Cards" items={content.problema.cards} onChange={v => set(d => { d.problema.cards = v; })} />
+      <ThemedCardListEditor label="Cards" items={content.problema.cards} onChange={v => set(d => { d.problema.cards = v; })} />
     </div>
   );
 }

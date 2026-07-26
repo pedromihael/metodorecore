@@ -1,5 +1,5 @@
 export type ProofItem = { num: string; label: string };
-export type CardItem = { title: string; body: string };
+export type CardItem = { title: string; body: string; theme?: string };
 export type Affiliate = { username: string; link: string };
 export type CarouselImage = { src: string; label: string; type: 'antes' | 'depois' };
 
