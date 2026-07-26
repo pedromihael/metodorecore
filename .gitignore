@@ -1,2 +1,4 @@
 nextjs/node_modules
-nextjs/
+nextjs/.next
+nextjs/.env*.local
+.DS_Store
