@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { saveContentAction, logoutAction } from './actions';
 import type { SiteContent, CardItem, Plano, Affiliate, ProofItem, CarouselImage } from '@/types/content';
+import { defaultContent } from '@/lib/defaults';
 
 // ─── Color tokens ─────────────────────────────────────────────────────────────
 
@@ -752,8 +753,19 @@ export default function AdminPage() {
 
   useEffect(() => {
     fetch('/api/content').then(r => r.json()).then((data: SiteContent) => {
-      setContent(data);
-      setSavedContent(JSON.parse(JSON.stringify(data)));
+      // Merge with defaults to fill in any fields added after initial save
+      const merged: SiteContent = {
+        ...defaultContent,
+        ...data,
+        hero: { ...defaultContent.hero, ...data.hero },
+        metodo: { ...defaultContent.metodo, ...data.metodo },
+        carousel: { ...defaultContent.carousel, ...data.carousel,
+          images: data.carousel?.images ?? defaultContent.carousel.images },
+        herniaUmbilical: { ...defaultContent.herniaUmbilical, ...data.herniaUmbilical },
+        homens: { ...defaultContent.homens, ...data.homens },
+      };
+      setContent(merged);
+      setSavedContent(JSON.parse(JSON.stringify(merged)));
     });
   }, []);
 
