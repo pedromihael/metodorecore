@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 import { createAuthClient } from '@/lib/supabase-server';
 import path from 'path';
 import sharp from 'sharp';
+import heicConvert from 'heic-convert';
 
 const HEIC_EXTS = new Set(['.heic', '.heif']);
 const MIME: Record<string, string> = {
@@ -40,7 +41,14 @@ export async function POST(request: NextRequest) {
 
   // Convert HEIC/HEIF to JPEG — browsers can't render HEIC
   if (HEIC_EXTS.has(ext) || contentType === 'image/heic' || contentType === 'image/heif') {
-    buffer = await sharp(buffer).jpeg({ quality: 90 }).toBuffer();
+    try {
+      // Try heic-convert first (handles iPhone Live Photos / burst with many iref)
+      const converted = await heicConvert({ buffer: new Uint8Array(buffer), format: 'JPEG', quality: 0.9 });
+      buffer = Buffer.from(converted);
+    } catch {
+      // Fallback to sharp
+      buffer = await sharp(buffer).jpeg({ quality: 90 }).toBuffer();
+    }
     finalExt = '.jpg';
     contentType = 'image/jpeg';
   }
