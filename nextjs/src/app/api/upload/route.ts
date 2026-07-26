@@ -2,12 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { createAuthClient } from '@/lib/supabase-server';
 import path from 'path';
+import sharp from 'sharp';
 
+const HEIC_EXTS = new Set(['.heic', '.heif']);
 const MIME: Record<string, string> = {
   '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
   '.png': 'image/png', '.gif': 'image/gif',
-  '.webp': 'image/webp', '.heic': 'image/heic',
-  '.heif': 'image/heif', '.avif': 'image/avif',
+  '.webp': 'image/webp', '.avif': 'image/avif',
 };
 
 function storageClient() {
@@ -30,22 +31,27 @@ export async function POST(request: NextRequest) {
 
   const ext = path.extname(file.name).toLowerCase();
   const base = path.basename(file.name, ext).replace(/[^a-zA-Z0-9_-]/g, '_');
-  const filename = `${Date.now()}_${base}${ext}`;
-  const storagePath = `${folder}/${filename}`;
 
-  const bytes = await file.arrayBuffer();
-  const supabase = storageClient();
-
-  const contentType = (file.type && file.type !== 'application/octet-stream')
+  let buffer = Buffer.from(await file.arrayBuffer());
+  let finalExt = ext;
+  let contentType = file.type && file.type !== 'application/octet-stream'
     ? file.type
     : (MIME[ext] ?? 'image/jpeg');
 
+  // Convert HEIC/HEIF to JPEG — browsers can't render HEIC
+  if (HEIC_EXTS.has(ext) || contentType === 'image/heic' || contentType === 'image/heif') {
+    buffer = await sharp(buffer).jpeg({ quality: 90 }).toBuffer();
+    finalExt = '.jpg';
+    contentType = 'image/jpeg';
+  }
+
+  const filename = `${Date.now()}_${base}${finalExt}`;
+  const storagePath = `${folder}/${filename}`;
+  const supabase = storageClient();
+
   const { error } = await supabase.storage
     .from('site-images')
-    .upload(storagePath, Buffer.from(bytes), {
-      contentType,
-      upsert: false,
-    });
+    .upload(storagePath, buffer, { contentType, upsert: false });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
