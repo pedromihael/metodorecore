@@ -12,6 +12,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["--prefix", "/Users/mihael/tatieli/nextjs", "next", "dev", "--turbo", "--port", "3001"],
       "port": 3001
+    },
+    {
+      "name": "pyyne-greenhouse",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "/Users/mihael/pyyne/pyyne-greenhouse", "run", "dev", "--", "--port", "3002"],
+      "port": 3002
     }
   ]
 }
